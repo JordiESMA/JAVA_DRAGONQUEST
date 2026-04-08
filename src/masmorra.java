@@ -3,6 +3,6 @@ public class masmorra {
         System.out.println("Hola");
     }
     public void despedirse(){
-        System.out.println("Adiós");
+        System.out.println("Chao");
     }
 }
