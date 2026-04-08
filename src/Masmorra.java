@@ -1,4 +1,4 @@
-public class masmorra {
+public class Masmorra {
     public void saludar(){
         System.out.println("Hola");
     }
