@@ -33,4 +33,5 @@ javac -d bin src/*.java
 java -cp bin Main
 Nota: Si utilizas un IDE (IntelliJ, Eclipse o NetBeans), simplemente importa la carpeta del proyecto y ejecuta la clase Main.java.
 
+PD: Sino baja todo el proyecto y te lo creas en una carpeta y ejecutas el main:)
 Autor: Mykola, Jordi – Estudiantes de DAM
