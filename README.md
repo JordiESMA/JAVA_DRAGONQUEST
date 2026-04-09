@@ -1,18 +1,36 @@
-## Getting Started
+# ⚔️ Java Dragon Quest: Dungeon Crawler
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Proyecto desarrollado para el **CFGS de Desarrollo de Aplicaciones Multiplataforma (DAM)**. Se trata de un motor de juego de rol (RPG) por turnos inspirado en la saga Dragon Quest, centrado en el uso de Programación Orientada a Objetos (POO) en Java.
 
-## Folder Structure
+### ✨ Características
+* **Sistema de Combate:** Lógica de turnos con gestión de HP, daño y acciones.
+* **Entidades POO:** Uso de clases, herencias, interficies y muchas mas.
+* **Progresión:** Sistema de experiencia .
 
-The workspace contains two folders by default, where:
+### 🛠️ Tecnologías y Conceptos
+* **Lenguaje:** Java 
+* **Conceptos clave:** Programación Orientada a Objetos (POO) y programación bàsica.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+### 🚀 Instalación y Ejecución
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+Sigue estos pasos para compilar y ejecutar el proyecto desde la terminal:
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+**1. Clonar el repositorio**
 
-## Dependency Management
+git clone [https://github.com/JordiESMA/JAVA_DRAGONQUEST](https://github.com/JordiESMA/JAVA_DRAGONQUEST)
+cd JAVA_DRAGONQUEST
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+**2. Compilar el proyecto**
+
+# Creamos la carpeta para los archivos compilados y compilamos
+mkdir bin
+javac -d bin src/*.java
+
+**3. Ejecutar el juego**
+
+
+# Lanzamos la aplicación (asegúrate de que Main es tu clase principal)
+java -cp bin Main
+Nota: Si utilizas un IDE (IntelliJ, Eclipse o NetBeans), simplemente importa la carpeta del proyecto y ejecuta la clase Main.java.
+
+Autor: Mykola, Jordi – Estudiantes de DAM
