@@ -30,6 +30,10 @@ public class Monstre implements Combatent {
 
     @Override
     public boolean estaViu() {
-        return false;
+        if(this.vida > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
