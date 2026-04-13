@@ -1,5 +1,5 @@
 public interface Combatent {
-    public int calcularAtac();
-    public int rebreDany(int quantitat);
-    public boolean estaViu();
+    int calcularAtac();
+    void rebreDany(int quantitat);
+    boolean estaViu();
 }
