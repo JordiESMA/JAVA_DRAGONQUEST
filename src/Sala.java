@@ -1,27 +1,43 @@
 import java.util.Random;
 
 public abstract class Sala {
-    
-     Random rand = new Random();
+
+    Random rand = new Random();
 
     // ATRIBUTOS
-    
+
     private boolean teTresor;
     private boolean teMonstre;
     private boolean esExplorada;
 
     // CONSTRUCTOR
     public Sala() {
-        
+
         this.teTresor = rand.nextBoolean();
         this.teMonstre = rand.nextBoolean();
         this.esExplorada = false;
     }
 
-    // MÉTODOS 
+    // MÉTODOS
     public abstract boolean intentarSortir(Personatge p);
 
     public void setEsExplorada(boolean explorada) {
         this.esExplorada = explorada;
-    } 
+    }
+/**
+ * EN ESTA FUNCION DECIMOS QUE SI TIENE MONSTRUO QUE GENER UN RANDOM Y LO MANDE A MONSTRUO(MIRAR MONSTRUO COMO COMPARTIR)
+ */
+    public void tipusMonstre(){
+        if (teMonstre) {
+            int tipus = rand.nextInt(3);
+            // if(nMonstre == 0) {
+            // monstre = new Monstre("Test", 3);
+            // } else if(nMonstre == 1) {
+            // monstre = new Monstre("Test2", 3);
+            // } else {
+            // monstre = new Monstre("Test3", 3);
+            // }
+        }
+    }
+
 }

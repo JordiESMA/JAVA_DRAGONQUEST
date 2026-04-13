@@ -3,7 +3,6 @@ import java.util.Random;
 public class Monstre implements Combatent {
     Random rand = new Random();
 
-
     // ATRIBUTOS
 
     private String nom;
@@ -11,23 +10,28 @@ public class Monstre implements Combatent {
     private int penalitzacio = rand.nextInt(4);
     private int valorExperiencia;
 
+    // CONSTRUCTOR
 
-    public static Monstre crearMonstre(int tipus) {
-        return new Monstre("sfs", 3);
-    }
-
+    /**
+     * Cuando nos manden el tipus nosotros de aqui generamos el monstruo a la sala
+     * @param tipus
+     */
     public Monstre(int tipus) {
 
+        switch (tipus) {
+            case 1:
+                
+            case 2:
+        
+            case 3:
+        }
     }
-
-    // CONSTRUCTOR
 
     public Monstre(String nom, int vida) {
         this.nom = nom;
         this.vida = vida;
         this.valorExperiencia = this.vida * 2;
     }
-
 
     // MÉTODOS
 
@@ -38,7 +42,7 @@ public class Monstre implements Combatent {
 
     @Override
     public int calcularAtac() {
-        return rand.nextInt(1, (vida+1));
+        return rand.nextInt(1, (vida + 1));
     }
 
     @Override
@@ -48,7 +52,7 @@ public class Monstre implements Combatent {
 
     @Override
     public boolean estaViu() {
-        if(this.vida > 0) {
+        if (this.vida > 0) {
             return true;
         } else {
             return false;
