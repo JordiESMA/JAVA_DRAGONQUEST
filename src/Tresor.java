@@ -14,8 +14,6 @@ public class Tresor {
         this.pes = pes;
     }
 
-
-
     //METODES
     @Override
     public String toString() {

@@ -1,4 +1,3 @@
-import javax.swing.text.Position;
 import java.awt.*;
 import java.util.Random;
 
@@ -12,8 +11,8 @@ public class Personatge implements Combatent{
     private int experiencia = 0;
     private int agilitat = rand.nextInt(4, 12);
     private int forsa = rand.nextInt(4, 12);
-    // private int[] posicio;
-    // private int equipament;
+    // private int[] posicio; La posicion siempre sera la primera de la matriz
+    private Tresor[] equipament = new Tresor[forsa];
 
 
     public Personatge(String nom) {
@@ -44,6 +43,14 @@ public class Personatge implements Combatent{
 
     @Override
     public boolean estaViu() {
-        return false;
+        if(this.vida > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public int getForsa() {
+        return this.forsa;
     }
 }
