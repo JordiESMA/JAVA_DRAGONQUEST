@@ -53,4 +53,8 @@ public class Personatge implements Combatent{
     public int getForsa() {
         return this.forsa;
     }
+    public int getAgilitat() {
+        return this.agilitat;
+    }
+    
 }

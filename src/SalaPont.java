@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class SalaTeranyina extends Sala {
+public class SalaPont extends Sala {
     //ATRIBUTS
 
     //CONSTRUCTOR
@@ -19,9 +19,10 @@ public class SalaTeranyina extends Sala {
 
     private boolean teExit( Random tirada, Personatge p){
 
-        if(tirada.nextInt(1 ,13) <= p.getForsa()){
+        if(tirada.nextInt(1 ,13) <= p.getAgilitat()){
             return true;
         } else {
+            p.rebreDany(1);
             return false;
         }
 
