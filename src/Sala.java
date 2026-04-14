@@ -9,6 +9,7 @@ public abstract class Sala {
     private boolean teTresor;
     private boolean teMonstre;
     private boolean esExplorada;
+    Monstre monstre;
 
     // CONSTRUCTOR
     public Sala() {
@@ -30,13 +31,7 @@ public abstract class Sala {
     public void tipusMonstre(){
         if (teMonstre) {
             int tipus = rand.nextInt(3);
-            // if(nMonstre == 0) {
-            // monstre = new Monstre("Test", 3);
-            // } else if(nMonstre == 1) {
-            // monstre = new Monstre("Test2", 3);
-            // } else {
-            // monstre = new Monstre("Test3", 3);
-            // }
+            monstre = new Monstre(tipus);
         }
     }
 

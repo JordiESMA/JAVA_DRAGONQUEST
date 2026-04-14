@@ -6,6 +6,7 @@ public class Tresor {
     private int valor;
     private double pes;
 
+
     //CONSTRUCTOR
     
     public Tresor (String nom, int valor, double pes){

@@ -17,20 +17,14 @@ public class Monstre implements Combatent {
      * @param tipus
      */
     public Monstre(int tipus) {
-
         switch (tipus) {
+            case 0:
+                crearMonstre("Demon", 6);
             case 1:
-                
+                crearMonstre("Skeleton", 3);
             case 2:
-        
-            case 3:
+                crearMonstre("Troll", 3);
         }
-    }
-
-    public Monstre(String nom, int vida) {
-        this.nom = nom;
-        this.vida = vida;
-        this.valorExperiencia = this.vida * 2;
     }
 
     // MÉTODOS
@@ -57,5 +51,11 @@ public class Monstre implements Combatent {
         } else {
             return false;
         }
+    }
+
+    public void crearMonstre(String nom, int vida) {
+        this.nom = nom;
+        this.vida = vida;
+        this.valorExperiencia = this.vida * 2;
     }
 }
