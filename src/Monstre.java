@@ -1,7 +1,7 @@
 import java.util.Random;
 
 public class Monstre implements Combatent {
-    Random rand = new Random();
+    private Random rand = new Random();
 
     // ATRIBUTOS
 
@@ -20,10 +20,13 @@ public class Monstre implements Combatent {
         switch (tipus) {
             case 0:
                 crearMonstre("Demon", 6);
+                break;
             case 1:
                 crearMonstre("Skeleton", 3);
+                break;
             case 2:
                 crearMonstre("Troll", 3);
+                break;
         }
     }
 
@@ -53,7 +56,7 @@ public class Monstre implements Combatent {
         }
     }
 
-    public void crearMonstre(String nom, int vida) {
+    private void crearMonstre(String nom, int vida) {
         this.nom = nom;
         this.vida = vida;
         this.valorExperiencia = this.vida * 2;

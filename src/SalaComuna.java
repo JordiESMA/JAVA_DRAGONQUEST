@@ -1,4 +1,4 @@
-public class salaComuna extends Sala {
+public class SalaComuna extends Sala {
 
 
     //METODOS
