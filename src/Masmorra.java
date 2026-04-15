@@ -2,6 +2,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Masmorra {
+
 	public static void main(String[] args) {
 		Scanner teclado = new Scanner(System.in);
 		Sala[][] mapaSalas = crearMasmorra();
@@ -74,10 +75,4 @@ public class Masmorra {
 	        System.out.println(); 
 	    }
 	}
-	
-	
-	
-	
 }
-
-
