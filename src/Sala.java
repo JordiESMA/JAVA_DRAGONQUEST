@@ -17,7 +17,6 @@ public abstract class Sala {
 
         this.teTresor = rand.nextBoolean();
         this.teMonstre = rand.nextBoolean();
-        this.esExplorada = false;
 
         afegirMonstre();
         afegirTresor();
@@ -52,6 +51,10 @@ public abstract class Sala {
 
     public Tresor getTresor() {
         return tresor;
+    }
+    
+    public boolean getExplorada() {
+    	return this.esExplorada;
     }
 
 }

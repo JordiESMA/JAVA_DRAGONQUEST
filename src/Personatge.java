@@ -11,7 +11,7 @@ public class Personatge implements Combatent{
     private int experiencia = 0;
     private int agilitat = rand.nextInt(4, 12);
     private int forsa = rand.nextInt(4, 12);
-    // private int[] posicio; La posicion siempre sera la primera de la matriz
+    private int[] posicio = new int [2]; 
     private Tresor[] equipament = new Tresor[forsa];
 
 
@@ -56,5 +56,13 @@ public class Personatge implements Combatent{
     public int getAgilitat() {
         return this.agilitat;
     }
+    public void setPosicio(int x, int y) {
+        this.posicio[0] = x;
+        this.posicio[1] = y;
+    }
+
+	public int[] getPosicio() {
+		return this.posicio;
+	}
     
 }
