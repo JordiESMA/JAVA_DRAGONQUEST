@@ -7,7 +7,6 @@ public class SalaPont extends Sala {
 
     //METODOS
     public boolean intentarSortir(Personatge p) {
-        // TODO Auto-generated method stub
          Random tiradaExit = new Random();
 
          if(teExit( tiradaExit , p)){

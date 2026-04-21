@@ -12,7 +12,7 @@ public class Personatge implements Combatent{
     private int agilitat = rand.nextInt(4, 12);
     private int forsa = rand.nextInt(4, 12);
     private int[] posicio = new int [2]; 
-    private Tresor[] equipament = new Tresor[forsa];
+    private Tresor[]  = new Tresor[forsa];
 
 
     public Personatge(String nom) {
@@ -21,6 +21,7 @@ public class Personatge implements Combatent{
 
     public void atacar(Monstre m) {
         m.rebreDany(calcularAtac());
+        System.out.println(m.getNom() + -" - " + m.getVida());
     }
 
     public void explorar() {
@@ -29,6 +30,7 @@ public class Personatge implements Combatent{
 
     public void moure(char direccio) {
 
+       //FALTA IMPLEMENTAR ESTE METODO PARA QUE EL PERSONAHE SE MUEVA
     }
 
     @Override
@@ -64,5 +66,8 @@ public class Personatge implements Combatent{
 	public int[] getPosicio() {
 		return this.posicio;
 	}
+    public String getNom(){
+        return this.nom;
+    }
     
 }

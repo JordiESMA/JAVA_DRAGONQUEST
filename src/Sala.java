@@ -25,7 +25,7 @@ public abstract class Sala {
     // MÉTODOS
     public abstract boolean intentarSortir(Personatge p);
 
-    public void setEsExplorada(boolean explorada) {
+    public void setExplorada(boolean explorada) {
         this.esExplorada = explorada;
     }
 /**
@@ -56,5 +56,6 @@ public abstract class Sala {
     public boolean getExplorada() {
     	return this.esExplorada;
     }
+    
 
 }

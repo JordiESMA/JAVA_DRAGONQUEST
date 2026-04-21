@@ -61,4 +61,10 @@ public class Monstre implements Combatent {
         this.vida = vida;
         this.valorExperiencia = this.vida * 2;
     }
+    public int getVida(){
+        return this.vida;
+    }
+    public String getNom(){
+        return this.nom;
+    }
 }
