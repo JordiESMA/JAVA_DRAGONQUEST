@@ -27,6 +27,9 @@ public class Masmorra {
 
             switch (accio) {
                 case 1:
+
+                    //FUNCIO MOURE
+
                     System.out.println("Indica la dirección (N: Norte, S: Sur, E: Este, O: Oeste):");
                     char direccio = teclado.next().toUpperCase().charAt(0);
                     
@@ -39,7 +42,12 @@ public class Masmorra {
                     }
                     break;
 
+                    
+
                 case 2:
+
+                    //FUNCIO ATACAR MONSTRE
+
                     int x = p1.getPosicio()[0];
                     int y = p1.getPosicio()[1];
                     Sala salaActual = mapaSalas[x][y];
@@ -54,7 +62,9 @@ public class Masmorra {
                     break;
 
                 case 3:
-                    // Al explorar, marcamos la sala actual como explorada en el mapa
+
+                    //FUNCIO EXPLORAR 
+                    
                     int posX = p1.getPosicio()[0];
                     int posY = p1.getPosicio()[1];
                     mapaSalas[posX][posY].setExplorada(true); 

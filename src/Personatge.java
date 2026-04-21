@@ -21,7 +21,7 @@ public class Personatge implements Combatent{
 
     public void atacar(Monstre m) {
         m.rebreDany(calcularAtac());
-        System.out.println(m.getNom() + -" - " + m.getVida());
+        System.out.println(m.getNom() + " - " + m.getVida());
     }
 
     public void explorar() {
@@ -30,7 +30,9 @@ public class Personatge implements Combatent{
 
     public void moure(char direccio) {
 
-       //FALTA IMPLEMENTAR ESTE METODO PARA QUE EL PERSONAHE SE MUEVA
+       //FALTA IMPLEMENTAR ESTE METODO PARA QUE EL PERSONAJE SE MUEVA
+
+       //SI SE MUEVE Y HAY UN MONSTRUO EN ESA SALA Y NO LO HA DERROTADO OENALIZAR LA VIDA (NUMERO 0-3)
     }
 
     @Override
