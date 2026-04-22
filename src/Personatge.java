@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.util.Random;
 
-public class Personatge implements Combatent{
+public class Personatge implements Combatent {
     Random rand = new Random();
     Monstre monstre;
 
@@ -11,9 +11,8 @@ public class Personatge implements Combatent{
     private int experiencia = 0;
     private int agilitat = rand.nextInt(4, 12);
     private int forsa = rand.nextInt(4, 12);
-    private int[] posicio = new int [2]; 
-    private Tresor[]  = new Tresor[forsa];
-
+    private int[] posicio = new int[2];
+    private Tresor[] tresor = new Tresor[forsa];
 
     public Personatge(String nom) {
         this.nom = nom;
@@ -30,14 +29,30 @@ public class Personatge implements Combatent{
 
     public void moure(char direccio) {
 
-       //FALTA IMPLEMENTAR ESTE METODO PARA QUE EL PERSONAJE SE MUEVA
+        switch (direccio) {
+            case 'N':
+                System.out.println("NORTE");
+                break;
+            case 'S':
+                System.out.println("SUR");
+                break;
+            case 'E':
+                System.out.println("ESTE");
+                break;
+            case '0':
+                System.out.println("OESTE");
+                break;
 
-       //SI SE MUEVE Y HAY UN MONSTRUO EN ESA SALA Y NO LO HA DERROTADO OENALIZAR LA VIDA (NUMERO 0-3)
+        }
+        // FALTA IMPLEMENTAR ESTE METODO PARA QUE EL PERSONAJE SE MUEVA
+
+        // SI SE MUEVE Y HAY UN MONSTRUO EN ESA SALA Y NO LO HA DERROTADO OENALIZAR LA
+        // VIDA (NUMERO 0-3)
     }
 
     @Override
     public int calcularAtac() {
-        return rand.nextInt(1, (atac+1));
+        return rand.nextInt(1, (atac + 1));
     }
 
     @Override
@@ -47,7 +62,7 @@ public class Personatge implements Combatent{
 
     @Override
     public boolean estaViu() {
-        if(this.vida > 0) {
+        if (this.vida > 0) {
             return true;
         } else {
             return false;
@@ -57,19 +72,22 @@ public class Personatge implements Combatent{
     public int getForsa() {
         return this.forsa;
     }
+
     public int getAgilitat() {
         return this.agilitat;
     }
+
     public void setPosicio(int x, int y) {
         this.posicio[0] = x;
         this.posicio[1] = y;
     }
 
-	public int[] getPosicio() {
-		return this.posicio;
-	}
-    public String getNom(){
+    public int[] getPosicio() {
+        return this.posicio;
+    }
+
+    public String getNom() {
         return this.nom;
     }
-    
+
 }
