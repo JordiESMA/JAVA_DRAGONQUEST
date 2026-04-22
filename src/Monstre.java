@@ -8,7 +8,7 @@ public class Monstre implements Combatent {
     private String nom;
     private int vida;
     private int penalitzacio = rand.nextInt(4);
-    private int valorExperiencia;
+    private int valorExperiencia;   
 
     // CONSTRUCTOR
 

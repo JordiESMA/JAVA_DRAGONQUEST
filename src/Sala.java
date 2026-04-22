@@ -23,7 +23,7 @@ public abstract class Sala {
     }
 
     // MÉTODOS
-    public abstract boolean intentarSortir(Personatge p);
+    public abstract boolean intentarSortir();
 
     public void setExplorada(boolean explorada) {
         this.esExplorada = explorada;

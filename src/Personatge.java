@@ -29,25 +29,27 @@ public class Personatge implements Combatent {
 
     public void moure(char direccio) {
 
-        switch (direccio) {
-            case 'N':
-                System.out.println("NORTE");
-                setPosicio(this.posicio[0]+1, this.posicio[1]);
-                break;
-            case 'S':
-                System.out.println("SUR");
-                setPosicio(this.posicio[0]-1, this.posicio[1]);
-                break;
-            case 'E':
-                System.out.println("ESTE");
-                setPosicio(this.posicio[0], this.posicio[1]+1);
-                break;
-            case '0':
-                System.out.println("OESTE");
-                setPosicio(this.posicio[0], this.posicio[1]-1);
-                break;
+            switch (direccio) {
+                case 'N':
+                    System.out.println("NORTE");
+                    setPosicio(this.posicio[0] + 1, this.posicio[1]);
+                    break;
+                case 'S':
+                    System.out.println("SUR");
+                    setPosicio(this.posicio[0] - 1, this.posicio[1]);
+                    break;
+                case 'E':
+                    System.out.println("ESTE");
+                    setPosicio(this.posicio[0], this.posicio[1] + 1);
+                    break;
+                case '0':
+                    System.out.println("OESTE");
+                    setPosicio(this.posicio[0], this.posicio[1] - 1);
+                    break;
 
+            }
         }
+
         // FALTA IMPLEMENTAR ESTE METODO PARA QUE EL PERSONAJE SE MUEVA
 
         // SI SE MUEVE Y HAY UN MONSTRUO EN ESA SALA Y NO LO HA DERROTADO OENALIZAR LA

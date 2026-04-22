@@ -6,17 +6,17 @@ public class SalaPont extends Sala {
     //CONSTRUCTOR
 
     //METODOS
-    public boolean intentarSortir(Personatge p) {
+    public boolean intentarSortir() {
          Random tiradaExit = new Random();
 
-         if(teExit( tiradaExit , p)){
+         if(teExit( tiradaExit)){
             return true;
          }else{
             return false;
          }
     }
 
-    private boolean teExit( Random tirada, Personatge p){
+    private boolean teExit( Random tirada){
 
         if(tirada.nextInt(1 ,13) <= p.getAgilitat()){
             return true;
