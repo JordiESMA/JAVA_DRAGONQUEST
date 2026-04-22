@@ -1,31 +1,44 @@
+import java.util.Random;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
 
-        SalaComuna s1 =  new SalaComuna();
-        SalaComuna s2 =  new SalaComuna();
-        SalaComuna s3 =  new SalaComuna();
-        SalaComuna s4 =  new SalaComuna();
-        SalaComuna s5 =  new SalaComuna();
+        Sala[][] masmorra = crearMasmora();
 
-        System.out.println(s1.getMonstre());
-        System.out.println(s2.getMonstre());
-        System.out.println(s3.getMonstre());
-        System.out.println(s4.getMonstre());
-        System.out.println(s5.getMonstre());
-
-        System.out.println(s1.getTresor());
-        System.out.println(s2.getTresor());
-        System.out.println(s3.getTresor());
-        System.out.println(s4.getTresor());
-        System.out.println(s5.getTresor());
-
-
-
-
-
-
+        for (int i=0; i<masmorra.length; i++) {
+            for (int j=0; j<masmorra[i].length; j++) {
+                System.out.println(masmorra[i][j]);
+            }
+        }
 
     }
 
+    public static Sala[][] crearMasmora() {
+        Sala[][] masmorra = new Sala[5][5];
+
+        for (int i = 0; i < masmorra.length; i++) {
+            for (int j = 0; j < masmorra[i].length; j++) {
+                Random rand = new Random();
+
+                int num = rand.nextInt(1,11);
+
+                if(num <= 6) {
+                    masmorra[i][j] = new SalaComuna();
+                } else if (num == 7 ||  num == 8) {
+                    masmorra[i][j] = new SalaPont();
+                } else {
+                    masmorra[i][j] = new SalaTeranyina();
+                }
+
+            }
+        }
+
+        return masmorra;
+    }
+
+
+    int[][] posicio = new int[1][1];
 
 }

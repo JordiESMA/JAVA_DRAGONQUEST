@@ -32,15 +32,19 @@ public class Personatge implements Combatent {
         switch (direccio) {
             case 'N':
                 System.out.println("NORTE");
+                setPosicio(this.posicio[0]+1, this.posicio[1]);
                 break;
             case 'S':
                 System.out.println("SUR");
+                setPosicio(this.posicio[0]-1, this.posicio[1]);
                 break;
             case 'E':
                 System.out.println("ESTE");
+                setPosicio(this.posicio[0], this.posicio[1]+1);
                 break;
             case '0':
                 System.out.println("OESTE");
+                setPosicio(this.posicio[0], this.posicio[1]-1);
                 break;
 
         }
