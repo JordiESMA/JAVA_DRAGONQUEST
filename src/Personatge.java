@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.Random;
 
 public class Personatge implements Combatent {
@@ -7,25 +6,16 @@ public class Personatge implements Combatent {
     Monstre monstre;
 
     private String nom;
-    private int vida; 
-    private int atac; 
-    private int experiencia;
-    private int agilitat;
-    private int forsa;
-    private int[] posicio;
-    private ArrayList<Tresor> equipament;
-    //private Tresor[] tresor = new Tresor[forsa];
+    private int vida = rand.nextInt(5, 21);
+    private int atac = rand.nextInt(1, 5);
+    private int experiencia = 0;
+    private int agilitat = rand.nextInt(4, 12);
+    private int forsa = rand.nextInt(4, 12);
+    private int[] posicio = new int[2];
+    private Tresor[] tresor = new Tresor[forsa];
 
     public Personatge(String nom) {
         this.nom = nom;
-        this.vida = rand.nextInt(5, 21);
-        this.atac = rand.nextInt(1, 5);
-        this.experiencia = 0;
-        this.agilitat = rand.nextInt(4, 12);
-        this.forsa = rand.nextInt(4, 12);
-        this.posicio = new int[2];
-        this.equipament = new ArrayList<>();
-        
     }
 
     public void atacar(Monstre m) {
@@ -39,32 +29,30 @@ public class Personatge implements Combatent {
 
     public void moure(char direccio) {
 
-            switch (direccio) {
-                case 'N':
-                    System.out.println("NORTE");
-                    setPosicio(this.posicio[0] + 1, this.posicio[1]);
-                    break;
-                case 'S':
-                    System.out.println("SUR");
-                    setPosicio(this.posicio[0] - 1, this.posicio[1]);
-                    break;
-                case 'E':
-                    System.out.println("ESTE");
-                    setPosicio(this.posicio[0], this.posicio[1] + 1);
-                    break;
-                case '0':
-                    System.out.println("OESTE");
-                    setPosicio(this.posicio[0], this.posicio[1] - 1);
-                    break;
+        switch (direccio) {
+            case 'N':
+                System.out.println("NORTE");
+                setPosicio(this.posicio[0]+1, this.posicio[1]);
+                break;
+            case 'S':
+                System.out.println("SUR");
+                setPosicio(this.posicio[0]-1, this.posicio[1]);
+                break;
+            case 'E':
+                System.out.println("ESTE");
+                setPosicio(this.posicio[0], this.posicio[1]+1);
+                break;
+            case '0':
+                System.out.println("OESTE");
+                setPosicio(this.posicio[0], this.posicio[1]-1);
+                break;
 
-            }
         }
-
         // FALTA IMPLEMENTAR ESTE METODO PARA QUE EL PERSONAJE SE MUEVA
 
         // SI SE MUEVE Y HAY UN MONSTRUO EN ESA SALA Y NO LO HA DERROTADO OENALIZAR LA
         // VIDA (NUMERO 0-3)
-    
+    }
 private void equipar(){
     
 }
