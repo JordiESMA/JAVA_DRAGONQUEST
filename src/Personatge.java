@@ -65,7 +65,10 @@ public class Personatge implements Combatent {
         // SI SE MUEVE Y HAY UN MONSTRUO EN ESA SALA Y NO LO HA DERROTADO OENALIZAR LA
         // VIDA (NUMERO 0-3)
     
-
+private void equipar(){
+    
+}
+    
     @Override
     public int calcularAtac() {
         return rand.nextInt(1, (atac + 1));
