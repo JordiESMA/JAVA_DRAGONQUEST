@@ -62,9 +62,14 @@ public class Personatge implements Combatent {
         // SI SE MUEVE Y HAY UN MONSTRUO EN ESA SALA Y NO LO HA DERROTADO OENALIZAR LA
         // VIDA (NUMERO 0-3)
     }
-private void equipar(){
+    private void equipar(){
 
-}
+    }
+
+    public boolean teExit(int valorAtributo) {
+        int dau = rand.nextInt();
+        return dau <= valorAtributo;
+    }
     
     @Override
     public int calcularAtac() {

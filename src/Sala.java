@@ -6,24 +6,25 @@ public abstract class Sala {
 
     // ATRIBUTOS
 
-    private boolean teTresor;
-    private boolean teMonstre;
     private boolean esExplorada;
     private Monstre monstre;
     private Tresor tresor;
 
     // CONSTRUCTOR
     public Sala() {
+        if (rand.nextBoolean()) {
+            int tipus = rand.nextInt(3);
+            monstre = new Monstre(tipus);
+        }
 
-        this.teTresor = rand.nextBoolean();
-        this.teMonstre = rand.nextBoolean();
-
-        afegirMonstre();
-        afegirTresor();
+        if (rand.nextBoolean()) {
+            int tipus = rand.nextInt(3);
+            tresor = new Tresor(tipus);
+        }
     }
 
     // MÉTODOS
-    public abstract boolean intentarSortir();
+    public abstract boolean intentarSortir(Personatge p);
 
     public void setExplorada(boolean explorada) {
         this.esExplorada = explorada;
@@ -31,19 +32,6 @@ public abstract class Sala {
 /**
  * EN ESTA FUNCION DECIMOS QUE SI TIENE MONSTRUO QUE GENER UN RANDOM Y LO MANDE A MONSTRUO(MIRAR MONSTRUO COMO COMPARTIR)
  */
-    public void afegirMonstre(){
-        if (teMonstre) {
-            int tipus = rand.nextInt(3);
-            monstre = new Monstre(tipus);
-        }
-    }
-
-    public void afegirTresor(){
-        if (teTresor) {
-            int tipus = rand.nextInt(3);
-            tresor = new Tresor(tipus);
-        }
-    }
 
     public Monstre getMonstre() {
         return monstre;

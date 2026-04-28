@@ -8,32 +8,37 @@ public class Monstre implements Combatent {
     private String nom;
     private int vida;
     private int penalitzacio;
-    private int valorExperiencia;   
+    private int valorExperiencia;
 
     // CONSTRUCTOR
 
-    public Monstre(String nom, int vida){
+    public Monstre(String nom, int vida) {
         this.nom = nom;
         this.vida = vida;
         this.penalitzacio = rand.nextInt(4);
-        this.valorExperiencia = vida *2;
+        this.valorExperiencia = vida * 2;
 
 
     }
+
     /**
      * Cuando nos manden el tipus nosotros de aqui generamos el monstruo a la sala
+     *
      * @param tipus
      */
     public Monstre(int tipus) {
         switch (tipus) {
             case 0:
-                crearMonstre("Demon", 6);
+                Monstre demon = new Monstre("Demon", 6);
+//                crearMonstre("Demon", 6);
                 break;
             case 1:
-                crearMonstre("Skeleton", 3);
+                Monstre skeleton = new Monstre("Skeleton", 3);
+//                crearMonstre("Skeleton", 3);
                 break;
             case 2:
-                crearMonstre("Troll", 3);
+                Monstre troll = new Monstre("Troll", 3);
+//                crearMonstre("Troll", 3);
                 break;
         }
     }
@@ -64,19 +69,18 @@ public class Monstre implements Combatent {
         }
     }
 
-    private void crearMonstre(String nom, int vida) {
-        this.nom = nom;
-        this.vida = vida;
-        this.valorExperiencia = this.vida * 2;
-    }
-    public int getVida(){
+//    private void crearMonstre(String nom, int vida) {
+//        this.nom = nom;
+//        this.vida = vida;
+//        this.valorExperiencia = this.vida * 2;
+//    }
+
+    public int getVida() {
         return this.vida;
     }
-    public String getNom(){
+
+    public String getNom() {
         return this.nom;
     }
-    @Override
-    public String toString() {
-        return String.format("MONSTRE: %s [Vida: %d]", nom, vida);
-    }
+
 }
