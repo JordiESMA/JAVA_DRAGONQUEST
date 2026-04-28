@@ -12,6 +12,11 @@ public class Monstre implements Combatent {
 
     // CONSTRUCTOR
 
+    public Monstre(String nom){
+        this.nom = nom;
+        
+
+    }
     /**
      * Cuando nos manden el tipus nosotros de aqui generamos el monstruo a la sala
      * @param tipus
