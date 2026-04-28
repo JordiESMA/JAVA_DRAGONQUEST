@@ -7,14 +7,17 @@ public class Monstre implements Combatent {
 
     private String nom;
     private int vida;
-    private int penalitzacio = rand.nextInt(4);
+    private int penalitzacio;
     private int valorExperiencia;   
 
     // CONSTRUCTOR
 
-    public Monstre(String nom){
+    public Monstre(String nom, int vida){
         this.nom = nom;
-        
+        this.vida = vida;
+        this.penalitzacio = rand.nextInt(4);
+        this.valorExperiencia = vida *2;
+
 
     }
     /**
@@ -71,5 +74,9 @@ public class Monstre implements Combatent {
     }
     public String getNom(){
         return this.nom;
+    }
+    @Override
+    public String toString() {
+        return String.format("MONSTRE: %s [Vida: %d]", nom, vida);
     }
 }
