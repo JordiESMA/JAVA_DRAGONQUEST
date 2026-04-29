@@ -72,6 +72,10 @@ public class Masmorra {
                     System.out.println("Has explorado la sala cuidadosamente.");
                     break;
 
+                case 4:
+                    //CONSULTAR PERSONAJE
+                    System.out.println(p1);
+
                 default:
                     System.out.println("Opción no válida. Introduce un número del 1 al 3.");
                     break;
