@@ -12,15 +12,6 @@ public class Monstre implements Combatent {
 
     // CONSTRUCTOR
 
-    public Monstre(String nom, int vida) {
-        this.nom = nom;
-        this.vida = vida;
-        this.penalitzacio = rand.nextInt(4);
-        this.valorExperiencia = vida * 2;
-
-
-    }
-
     /**
      * Cuando nos manden el tipus nosotros de aqui generamos el monstruo a la sala
      *
@@ -29,16 +20,13 @@ public class Monstre implements Combatent {
     public Monstre(int tipus) {
         switch (tipus) {
             case 0:
-                Monstre demon = new Monstre("Demon", 6);
-//                crearMonstre("Demon", 6);
+                crearMonstre("Demon", 6);
                 break;
             case 1:
-                Monstre skeleton = new Monstre("Skeleton", 3);
-//                crearMonstre("Skeleton", 3);
+                crearMonstre("Skeleton", 3);
                 break;
             case 2:
-                Monstre troll = new Monstre("Troll", 3);
-//                crearMonstre("Troll", 3);
+                crearMonstre("Troll", 3);
                 break;
         }
     }
@@ -69,11 +57,12 @@ public class Monstre implements Combatent {
         }
     }
 
-//    private void crearMonstre(String nom, int vida) {
-//        this.nom = nom;
-//        this.vida = vida;
-//        this.valorExperiencia = this.vida * 2;
-//    }
+    private void crearMonstre(String nom, int vida) {
+        this.nom = nom;
+        this.vida = vida;
+        this.valorExperiencia = this.vida * 2;
+        this.penalitzacio = rand.nextInt(4);
+    }
 
     public int getVida() {
         return this.vida;

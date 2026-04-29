@@ -32,7 +32,10 @@ public class Personatge implements Combatent {
         System.out.println(m.getNom() + " - " + m.getVida());
     }
 
-    public void explorar() {
+    public void explorar(Sala salaActual) {
+        Tresor t = salaActual.getTresor();
+
+
 
     }
 
@@ -41,17 +44,17 @@ public class Personatge implements Combatent {
         switch (direccio) {
             case 'N':
                 System.out.println("NORTE");
-                setPosicio(this.posicio[0]+1, this.posicio[1]);
+                setPosicio(this.posicio[0]-1, this.posicio[1]);
                 break;
             case 'S':
                 System.out.println("SUR");
-                setPosicio(this.posicio[0]-1, this.posicio[1]);
+                setPosicio(this.posicio[0]+1, this.posicio[1]);
                 break;
             case 'E':
                 System.out.println("ESTE");
                 setPosicio(this.posicio[0], this.posicio[1]+1);
                 break;
-            case '0':
+            case 'O':
                 System.out.println("OESTE");
                 setPosicio(this.posicio[0], this.posicio[1]-1);
                 break;
@@ -67,7 +70,7 @@ public class Personatge implements Combatent {
     }
 
     public boolean teExit(int valorAtributo) {
-        int dau = rand.nextInt();
+        int dau = rand.nextInt(1, 13);
         return dau <= valorAtributo;
     }
     
