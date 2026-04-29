@@ -71,5 +71,8 @@ public class Monstre implements Combatent {
     public String getNom() {
         return this.nom;
     }
+    public int getPenalitzacio(){
+        return this.penalitzacio;
+    }
 
 }

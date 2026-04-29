@@ -36,16 +36,15 @@ public class Masmorra {
 
                     if (validarMovimiento(p1.getPosicio(), direccio)) {
                         if (salaActual.intentarSortir(p1)) {
+                            Monstre m = salaActual.getMonstre();
+                            if (m != null && m.estaViu()) {
+                                p1.rebreDany(m.getPenalitzacio());
+                                System.out.println("¡El monstruo te ha penalizado al salir!");
+                            }
                             p1.moure(direccio);
                             System.out.println("Te has movido hacia el " + direccio);
                         } else {
-                            Monstre m = salaActual.getMonstre();
-                            if (m != null && m.estaViu()) {
-                                p1.rebreDany(m.calcularAtac());
-                                System.out.println("¡El monstruo te ha atacado!");
-                            } else {
-                                System.out.println("No puedes salir de la sala.");
-                            }
+                            System.out.println("No puedes salir de la sala.");
                         }
                     } else {
                         System.out.println("¡Cuidado! Hay un muro infranqueable en esa dirección.");
@@ -69,7 +68,7 @@ public class Masmorra {
 
                     // FUNCIO EXPLORAR
                     mapaSalas[x][y].setExplorada(true);
-                    p1.explorar(mapaSalas[x][y] );
+                    p1.explorar(mapaSalas[x][y]);
                     System.out.println("Has explorado la sala cuidadosamente.");
                     break;
 
