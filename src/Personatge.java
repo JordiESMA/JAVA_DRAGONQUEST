@@ -1,10 +1,9 @@
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Personatge implements Combatent {
     Random rand = new Random();
-    Monstre monstre;
+    
 
     private String nom;
     private int vida; 
@@ -14,7 +13,7 @@ public class Personatge implements Combatent {
     private int forsa;
     private int[] posicio;
     private ArrayList<Tresor> equipament;
-    //private Tresor[] tresor = new Tresor[forsa];
+    
 
     public Personatge(String nom) {
         this.nom = nom;
@@ -35,16 +34,13 @@ public class Personatge implements Combatent {
     public void explorar(Sala salaActual) {
     Tresor t = salaActual.getTresor();
     if (t != null) {
-        if (equipament.size() < forsa) {
-            equipament.add(t);
-            System.out.println("Has encontrado y equipado: " + t.toString());
-        } else {
-            System.out.println("Inventario lleno, no puedes coger el tresor.");
-        }
+        equipar(t);
     } else {
         System.out.println("No hay tresor en esta sala.");
     }
 }
+
+
 
     public void moure(char direccio) {
 
@@ -67,14 +63,16 @@ public class Personatge implements Combatent {
                 break;
 
         }
-        // FALTA IMPLEMENTAR ESTE METODO PARA QUE EL PERSONAJE SE MUEVA
-
-        // SI SE MUEVE Y HAY UN MONSTRUO EN ESA SALA Y NO LO HA DERROTADO OENALIZAR LA
-        // VIDA (NUMERO 0-3)
+       
     }
-    private void equipar(){
-
+    private void equipar(Tresor t) {
+    if (equipament.size() < forsa) {
+        equipament.add(t);
+        System.out.println("Has encontrado y equipado: " + t.toString());
+    } else {
+        System.out.println("Inventario lleno, no puedes coger el tresor.");
     }
+}
 
     public boolean teExit(int valorAtributo) {
         int dau = rand.nextInt(1, 13);
