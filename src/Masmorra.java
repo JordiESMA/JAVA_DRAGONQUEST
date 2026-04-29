@@ -22,6 +22,7 @@ public class Masmorra {
             System.out.println("1. Moverse");
             System.out.println("2. Atacar");
             System.out.println("3. Explorar");
+            System.out.println("4. Personaje info");
 
             int x = p1.getPosicio()[0];
             int y = p1.getPosicio()[1];
