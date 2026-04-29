@@ -3,17 +3,15 @@ import java.util.Random;
 
 public class Personatge implements Combatent {
     Random rand = new Random();
-    
 
     private String nom;
-    private int vida; 
-    private int atac; 
+    private int vida;
+    private int atac;
     private int experiencia;
     private int agilitat;
     private int forsa;
     private int[] posicio;
     private ArrayList<Tresor> equipament;
-    
 
     public Personatge(String nom) {
         this.nom = nom;
@@ -32,53 +30,52 @@ public class Personatge implements Combatent {
     }
 
     public void explorar(Sala salaActual) {
-    Tresor t = salaActual.getTresor();
-    if (t != null) {
-        equipar(t);
-    } else {
-        System.out.println("No hay tresor en esta sala.");
+        Tresor t = salaActual.getTresor();
+        if (t != null) {
+            equipar(t);
+        } else {
+            System.out.println("No hay tresor en esta sala.");
+        }
     }
-}
-
-
 
     public void moure(char direccio) {
 
         switch (direccio) {
             case 'N':
                 System.out.println("NORTE");
-                setPosicio(this.posicio[0]-1, this.posicio[1]);
+                setPosicio(this.posicio[0] - 1, this.posicio[1]);
                 break;
             case 'S':
                 System.out.println("SUR");
-                setPosicio(this.posicio[0]+1, this.posicio[1]);
+                setPosicio(this.posicio[0] + 1, this.posicio[1]);
                 break;
             case 'E':
                 System.out.println("ESTE");
-                setPosicio(this.posicio[0], this.posicio[1]+1);
+                setPosicio(this.posicio[0], this.posicio[1] + 1);
                 break;
             case 'O':
                 System.out.println("OESTE");
-                setPosicio(this.posicio[0], this.posicio[1]-1);
+                setPosicio(this.posicio[0], this.posicio[1] - 1);
                 break;
 
         }
-       
+
     }
+
     private void equipar(Tresor t) {
-    if (equipament.size() < forsa) {
-        equipament.add(t);
-        System.out.println("Has encontrado y equipado: " + t.toString());
-    } else {
-        System.out.println("Inventario lleno, no puedes coger el tresor.");
+        if (equipament.size() < forsa) {
+            equipament.add(t);
+            System.out.println("Has encontrado y equipado: " + t.toString());
+        } else {
+            System.out.println("Inventario lleno, no puedes coger el tresor.");
+        }
     }
-}
 
     public boolean teExit(int valorAtributo) {
         int dau = rand.nextInt(1, 13);
         return dau <= valorAtributo;
     }
-    
+
     @Override
     public int calcularAtac() {
         return rand.nextInt(1, (atac + 1));
@@ -117,6 +114,16 @@ public class Personatge implements Combatent {
 
     public String getNom() {
         return this.nom;
+    }
+
+    @Override
+    public String toString() {
+        return "Nom: " + nom +
+                " | Vida: " + vida +
+                " | Agilitat: " + agilitat +
+                " | Forsa: " + forsa +
+                " | Posicio: [" + posicio[0] + ", " + posicio[1] + "]" +
+                " | Equipament: " + equipament.toString();
     }
 
 }
