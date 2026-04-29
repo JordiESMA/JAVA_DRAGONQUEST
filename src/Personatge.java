@@ -33,11 +33,18 @@ public class Personatge implements Combatent {
     }
 
     public void explorar(Sala salaActual) {
-        Tresor t = salaActual.getTresor();
-
-
-
+    Tresor t = salaActual.getTresor();
+    if (t != null) {
+        if (equipament.size() < forsa) {
+            equipament.add(t);
+            System.out.println("Has encontrado y equipado: " + t.toString());
+        } else {
+            System.out.println("Inventario lleno, no puedes coger el tresor.");
+        }
+    } else {
+        System.out.println("No hay tresor en esta sala.");
     }
+}
 
     public void moure(char direccio) {
 

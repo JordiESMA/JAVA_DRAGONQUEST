@@ -31,35 +31,30 @@ public class Masmorra {
 
             switch (accio) {
                 case 1:
-
-
-                    //FUNCIO MOURE
-
-
                     System.out.println("Indica la dirección (N: Norte, S: Sur, E: Este, O: Oeste):");
                     char direccio = teclado.next().toUpperCase().charAt(0);
 
-                    // Validamos que el movimiento no se salga del array (0-4)
                     if (validarMovimiento(p1.getPosicio(), direccio)) {
-
                         if (salaActual.intentarSortir(p1)) {
-                        p1.moure(direccio);
-                        System.out.println("Te has movido hacia el " + direccio);
-
-                        } else{
-                        System.out.println("PIERDE VIDA O ES SALA ESPECIAL");
+                            p1.moure(direccio);
+                            System.out.println("Te has movido hacia el " + direccio);
+                        } else {
+                            Monstre m = salaActual.getMonstre();
+                            if (m != null && m.estaViu()) {
+                                p1.rebreDany(m.calcularAtac());
+                                System.out.println("¡El monstruo te ha atacado!");
+                            } else {
+                                System.out.println("No puedes salir de la sala.");
+                            }
                         }
-
-                    }else {
+                    } else {
                         System.out.println("¡Cuidado! Hay un muro infranqueable en esa dirección.");
                     }
                     break;
 
-
-
                 case 2:
 
-                    //FUNCIO ATACAR MONSTRE
+                    // FUNCIO ATACAR MONSTRE
                     Monstre m = salaActual.getMonstre();
 
                     if (m != null && m.estaViu()) {
@@ -72,9 +67,9 @@ public class Masmorra {
 
                 case 3:
 
-                    //FUNCIO EXPLORAR
+                    // FUNCIO EXPLORAR
                     mapaSalas[x][y].setExplorada(true);
-                    p1.explorar();
+                    p1.explorar(mapaSalas[x][y] );
                     System.out.println("Has explorado la sala cuidadosamente.");
                     break;
 
