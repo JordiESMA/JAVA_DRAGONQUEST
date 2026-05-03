@@ -109,9 +109,17 @@ public class Masmorra {
                     break;
 
                 case 4:
-                    mapaSalas[x][y].setExplorada(true);
-                    pers.explorar(mapaSalas[x][y]);
-                    System.out.println("Has explorado la sala cuidadosamente.");
+                    if (rand.nextInt(1, 11) == 1) {
+                        int r = rand.nextInt(1, 4);
+                        pers.setVida(pers.getVida() - r);
+
+                        System.out.println("¡El personaje ha caído en una trampa! Pierde " + r + " puntos de vida.");
+                    } else {
+                        mapaSalas[x][y].setExplorada(true);
+                        pers.explorar(mapaSalas[x][y]);
+                        System.out.println("Has explorado la sala cuidadosamente.");
+                    }
+
                     break;
 
                 case 5:
