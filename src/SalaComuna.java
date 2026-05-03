@@ -1,10 +1,12 @@
 public class SalaComuna extends Sala {
 
-
-    //METODOS
+    // ---------------------------------
+    // ----- FUNCIONES OBLIGATORIOS ----
+    // ---------------------------------
 
     @Override
     public boolean intentarSortir(Personatge p) {
         return true;
     }
+
 }

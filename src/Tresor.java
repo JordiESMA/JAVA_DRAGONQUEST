@@ -1,14 +1,24 @@
 public class Tresor {
 
-    //ATRIBUTS
+
+    // ---------------------------------
+    // ---------- ATRIBUTOS ------------
+    // ---------------------------------
+
+
 
     private String nom;
     private int valor;
     private double pes;
 
 
-    //CONSTRUCTOR
-    
+
+    // ---------------------------------
+    // --------- CONSTRUCTOR -----------
+    // ---------------------------------
+
+
+
     public Tresor (int tipus){
         switch (tipus) {
             case 0:
@@ -23,16 +33,46 @@ public class Tresor {
         }
     }
 
-    //METODES
+
+
+
+    // ---------------------------------
+    // ----- FUNCIONES OBLIGATORIOS ----
+    // ---------------------------------
+
+
+
+
     @Override
     public String toString() {
         // Al usar 'pes' aquí, el error de VS Code desaparecerá
         return "Nom: " + nom + " Valor: " + valor + " monedes";
     }
 
+
+
+    // ---------------------------------
+    // ----- FUNCIONES ADICIONALES -----
+    // ---------------------------------
+
+
+
+
     private void crearTresor(String nom, int valor, int pes) {
         this.nom = nom;
         this.valor = valor;
         this.pes = pes;
     }
+
+
+    // ---------------------------------
+    // ------ GETTERS + SETTERS --------
+    // ---------------------------------
+
+    public int getValor() {
+        return valor;
+    }
+
+
+
 }

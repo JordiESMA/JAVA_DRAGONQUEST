@@ -3,79 +3,108 @@ import java.util.Scanner;
 
 public class Masmorra {
 
-    public static void main(String[] args) {
-        Scanner teclado = new Scanner(System.in);
 
-        // Inicializamos la mazmorra y el personaje
+    // ---------------------------------
+    // ------------ MAIN ---------------
+    // ---------------------------------
+
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
         Sala[][] mapaSalas = crearMasmorra();
-        Personatge p1 = new Personatge("Messi");
+        Personatge pers = new Personatge("Caballero");
+
+        boolean fin = false;
+        String causaDeLaMort = "";
 
         System.out.println("--- ¡BIENVENIDO A LA MAZMORRA! ---");
         System.out.println("Recuerda: si no atacas cuando hay un monstruo, perderás vida.");
 
-        // Bucle principal del juego
-        while (p1.estaViu()) {
-            System.out.println("\n--- ESTADO DE LA MAZMORRA ---");
-            mostrarMasmorra(mapaSalas, p1);
+        while (pers.estaViu() && !fin) {
+            System.out.println("--- ESTADO DE LA MAZMORRA ---");
 
-            System.out.println("\n¿QUÉ DESEAS HACER?");
+            mostrarMasmorra(mapaSalas, pers);
+
+            System.out.println();
+
+            System.out.println("¿QUÉ DESEAS HACER?");
             System.out.println("1. Moverse");
             System.out.println("2. Atacar");
             System.out.println("3. Explorar");
             System.out.println("4. Personaje info");
+            System.out.println("5. Sala actual info");
 
-            int x = p1.getPosicio()[0];
-            int y = p1.getPosicio()[1];
+            int accio =  sc.nextInt();
+
+            int x = pers.getPosicio()[0];
+            int y = pers.getPosicio()[1];
             Sala salaActual = mapaSalas[x][y];
-
-            int accio = teclado.nextInt();
 
             switch (accio) {
                 case 1:
-                    System.out.println("Indica la dirección (N: Norte, S: Sur, E: Este, O: Oeste):");
-                    char direccio = teclado.next().toUpperCase().charAt(0);
+                    System.out.println("Indica la dirección (W, A, S, D):");
+                    char direccio = sc.next().toUpperCase().charAt(0);
 
-                    if (validarMovimiento(p1.getPosicio(), direccio)) {
-                        if (salaActual.intentarSortir(p1)) {
+                    if(!esSalidaMasmorra(pers.getPosicio(), direccio, mapaSalas)) {
+                        if(salaActual.intentarSortir(pers)) {
                             Monstre m = salaActual.getMonstre();
+
                             if (m != null && m.estaViu()) {
-                                p1.rebreDany(m.getPenalitzacio());
+                                pers.rebreDany(m.getPenalitzacio());
                                 System.out.println("¡El monstruo te ha penalizado al salir!");
+
+                                if(!pers.estaViu()) {
+                                    causaDeLaMort = "Monstruo";
+                                }
+
+                            } else {
+                                pers.moure(direccio);
+                                System.out.println("Te has movido hacia el " + direccio);
                             }
-                            p1.moure(direccio);
-                            System.out.println("Te has movido hacia el " + direccio);
+
                         } else {
-                            System.out.println("No puedes salir de la sala.");
+                            System.out.println("No has podido salir de la sala");
+                            if(!pers.estaViu()) {
+                                causaDeLaMort = "Caída del puente";
+                            }
                         }
                     } else {
-                        System.out.println("¡Cuidado! Hay un muro infranqueable en esa dirección.");
+                        estadistica(pers, mapaSalas);
+                        fin = true;
                     }
+
                     break;
 
                 case 2:
-
-                    // FUNCIO ATACAR MONSTRE
                     Monstre m = salaActual.getMonstre();
 
                     if (m != null && m.estaViu()) {
-                        p1.atacar(m);
                         System.out.println("¡Has atacado al monstruo!");
+                        pers.atacar(m);
+
+                        if(!pers.estaViu()) {
+                            causaDeLaMort = "Monstruo";
+                        }
+
                     } else {
                         System.out.println("No hay ningún monstruo vivo en esta sala.");
                     }
                     break;
 
                 case 3:
-
-                    // FUNCIO EXPLORAR
                     mapaSalas[x][y].setExplorada(true);
-                    p1.explorar(mapaSalas[x][y]);
+                    pers.explorar(mapaSalas[x][y]);
                     System.out.println("Has explorado la sala cuidadosamente.");
                     break;
 
                 case 4:
-                    //CONSULTAR PERSONAJE
-                    System.out.println(p1);
+                    System.out.println(pers);
+                    break;
+
+                case 5:
+                    System.out.println(salaActual);
                     break;
 
                 default:
@@ -84,40 +113,38 @@ public class Masmorra {
             }
         }
 
-        // Este mensaje solo sale cuando p1.estaViu() es falso
-        System.out.println("\n--- JUEGO TERMINADO ---");
-        System.out.println("El personaje " + p1.getNom() + " ha caído en combate.");
-        teclado.close();
-    }
-
-    /**
-     * Valida si el movimiento es posible dentro de un mapa de 5x5.
-     */
-    public static boolean validarMovimiento(int[] pos, char dir) {
-        int fila = pos[0];
-        int col = pos[1];
-
-        switch (dir) {
-            case 'N':
-                return fila > 0;
-            case 'S':
-                return fila < 4;
-            case 'O':
-                return col > 0;
-            case 'E':
-                return col < 4;
-            default:
-                return false;
+        if (!pers.estaViu()) {
+            estadistica(pers, mapaSalas, causaDeLaMort);
         }
+
     }
+
+
+
+
+
+    // ---------------------------------
+    // ---------- FUNCIONES ------------
+    // ---------------------------------
+
+
+
+
+
+
 
     public static Sala[][] crearMasmorra() {
-        Sala[][] mapaSalas = new Sala[5][5];
-        Random rand = new Random();
 
-        for (int fil = 0; fil < 5; fil++) {
-            for (int col = 0; col < 5; col++) {
-                int num = rand.nextInt(10) + 1; // Genera de 1 a 10
+        Random rand = new Random();
+        int filas = 5;
+        int columnas = 5;
+
+        Sala[][] mapaSalas = new Sala[filas][columnas];
+
+        for (int fil = 0; fil < mapaSalas.length; fil++) {
+            for (int col = 0; col < mapaSalas[fil].length; col++) {
+
+                int num = rand.nextInt(1, 11);
 
                 if (num <= 6) {
                     mapaSalas[fil][col] = new SalaComuna();
@@ -128,6 +155,7 @@ public class Masmorra {
                 }
             }
         }
+
         return mapaSalas;
     }
 
@@ -136,6 +164,7 @@ public class Masmorra {
         int posY = p1.getPosicio()[1];
 
         for (int fil = 0; fil < mapaSalas.length; fil++) {
+
             for (int col = 0; col < mapaSalas[fil].length; col++) {
                 if (fil == posX && col == posY) {
                     System.out.print("| & |"); // Posición del jugador
@@ -145,7 +174,52 @@ public class Masmorra {
                     System.out.print("| - |"); // Sala oculta
                 }
             }
+
             System.out.println();
         }
     }
+
+    public static boolean esSalidaMasmorra(int[] pos, char dir, Sala[][] mapaSalas) {
+        int fila = pos[0];
+        int col = pos[1];
+
+        return (dir == 'W' && fila == 0) ||
+                (dir == 'S' && fila == mapaSalas.length - 1) ||
+                (dir == 'A' && col == 0) ||
+                (dir == 'D' && col == mapaSalas[0].length - 1);
+
+    }
+
+    public static double porcentajeMasmorra(Sala[][] mapaSalas) {
+        int salasExploradas = 0;
+
+        for (int fila = 0; fila < mapaSalas.length; fila++) {
+            for (int col = 0; col < mapaSalas[fila].length; col++) {
+                if (mapaSalas[fila][col].getExplorada()) {
+                    salasExploradas++;
+                }
+            }
+        }
+
+        return ((double) salasExploradas / (mapaSalas.length * mapaSalas[0].length)) * 100;
+    }
+
+    public static void estadistica(Personatge pers, Sala[][] mapaSalas, String causaDeLaMort) {
+        System.out.println("============ DERROTA ============");
+        System.out.println("=== Estadísticas de la partida ===");
+        System.out.println("Experiencia: " + pers.getExperiencia());
+        System.out.println("Causa de la muerte: " + causaDeLaMort);
+        System.out.println("Masmorra explorada: " + porcentajeMasmorra(mapaSalas) + "%");
+    }
+
+    public static void estadistica(Personatge pers, Sala[][] mapaSalas) {
+        System.out.println("============ VICTORIA ============");
+        System.out.println("=== Estadísticas de la partida ===");
+        System.out.println("Experiencia: " + pers.getExperiencia());
+        System.out.println("Tesoros: " + pers.getTresorTotal());
+        System.out.println("Vida restante: " + pers.getVida());
+        System.out.println("Monedas de oro: " + pers.getMonedas());
+        System.out.println("Masmorra explorada: " + porcentajeMasmorra(mapaSalas) + "%");
+    }
+
 }

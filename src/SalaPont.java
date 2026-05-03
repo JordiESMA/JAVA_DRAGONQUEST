@@ -1,17 +1,24 @@
 import java.util.Random;
 
 public class SalaPont extends Sala {
-    //ATRIBUTS
 
-    //CONSTRUCTOR
+    // ---------------------------------
+    // ---------- ATRIBUTOS ------------
+    // ---------------------------------
 
-    //METODOS
+    Random rand = new Random();
+
+    // ---------------------------------
+    // ----- FUNCIONES OBLIGATORIOS ----
+    // ---------------------------------
+
+    @Override
     public boolean intentarSortir(Personatge p) {
-
-         if(p.teExit(p.getAgilitat())){
+        if(rand.nextInt(1, 13) <= p.getAgilitat()) {
             return true;
-         }else{
-            return false;
-         }
+        }
+
+        p.rebreDany(1);
+        return false;
     }
 }

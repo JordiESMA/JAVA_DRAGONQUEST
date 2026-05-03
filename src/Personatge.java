@@ -1,8 +1,17 @@
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Personatge implements Combatent {
-    Random rand = new Random();
+public class Personatge implements Combatent{
+
+
+
+    // ---------------------------------
+    // ---------- ATRIBUTOS ------------
+    // ---------------------------------
+
+
+
+    private Random rand = new Random();
 
     private String nom;
     private int vida;
@@ -12,6 +21,14 @@ public class Personatge implements Combatent {
     private int forsa;
     private int[] posicio;
     private ArrayList<Tresor> equipament;
+
+
+
+    // ---------------------------------
+    // --------- CONSTRUCTOR -----------
+    // ---------------------------------
+
+
 
     public Personatge(String nom) {
         this.nom = nom;
@@ -24,56 +41,55 @@ public class Personatge implements Combatent {
         this.equipament = new ArrayList<>();
     }
 
+
+
+    // ---------------------------------
+    // ----- FUNCIONES OBLIGATORIOS ----
+    // ---------------------------------
+
+
+
     public void atacar(Monstre m) {
         m.rebreDany(calcularAtac());
-        System.out.println(m.getNom() + " - " + m.getVida());
+
+        if (m.estaViu()) {
+            rebreDany(m.calcularAtac());
+            System.out.println(m.getNom() + " - " + m.getVida());
+        } else {
+            this.experiencia += m.getValorExperiencia();
+            System.out.println(m.getNom() + " ha muerto");
+        }
     }
 
     public void explorar(Sala salaActual) {
         Tresor t = salaActual.getTresor();
-        if (t != null) {
-            equipar(t);
+
+        if (t != null && equipament.size() < forsa) {
+            equipament.add(t);
+            System.out.println("Has encontrado y equipado: " + t.toString());
+        } else if (!(equipament.size() < forsa)) {
+            System.out.println("Inventario lleno, no puedes coger el tresor.");
         } else {
             System.out.println("No hay tresor en esta sala.");
         }
+
     }
 
     public void moure(char direccio) {
-
         switch (direccio) {
-            case 'N':
-                System.out.println("NORTE");
+            case 'W':
                 setPosicio(this.posicio[0] - 1, this.posicio[1]);
                 break;
             case 'S':
-                System.out.println("SUR");
                 setPosicio(this.posicio[0] + 1, this.posicio[1]);
                 break;
-            case 'E':
-                System.out.println("ESTE");
+            case 'D':
                 setPosicio(this.posicio[0], this.posicio[1] + 1);
                 break;
-            case 'O':
-                System.out.println("OESTE");
+            case 'A':
                 setPosicio(this.posicio[0], this.posicio[1] - 1);
                 break;
-
         }
-
-    }
-
-    private void equipar(Tresor t) {
-        if (equipament.size() < forsa) {
-            equipament.add(t);
-            System.out.println("Has encontrado y equipado: " + t.toString());
-        } else {
-            System.out.println("Inventario lleno, no puedes coger el tresor.");
-        }
-    }
-
-    public boolean teExit(int valorAtributo) {
-        int dau = rand.nextInt(1, 13);
-        return dau <= valorAtributo;
     }
 
     @Override
@@ -95,6 +111,33 @@ public class Personatge implements Combatent {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Nom: " + nom +
+                " | Vida: " + vida +
+                " | Agilitat: " + agilitat +
+                " | Força: " + forsa +
+                " | Posició: [" + posicio[0] + ", " + posicio[1] + "]" +
+                " | Equipament: " + equipament.toString();
+    }
+
+
+
+
+
+
+    // ---------------------------------
+    // ------ GETTERS + SETTERS --------
+    // ---------------------------------
+
+
+
+
+    public void setPosicio(int x, int y) {
+        this.posicio[0] = x;
+        this.posicio[1] = y;
+    }
+
     public int getForsa() {
         return this.forsa;
     }
@@ -103,27 +146,30 @@ public class Personatge implements Combatent {
         return this.agilitat;
     }
 
-    public void setPosicio(int x, int y) {
-        this.posicio[0] = x;
-        this.posicio[1] = y;
-    }
-
     public int[] getPosicio() {
         return this.posicio;
     }
 
-    public String getNom() {
-        return this.nom;
+    public int getExperiencia() {
+        return this.experiencia;
     }
 
-    @Override
-    public String toString() {
-        return "Nom: " + nom +
-                " | Vida: " + vida +
-                " | Agilitat: " + agilitat +
-                " | Forsa: " + forsa +
-                " | Posicio: [" + posicio[0] + ", " + posicio[1] + "]" +
-                " | Equipament: " + equipament.toString();
+    public int getTresorTotal() {
+        return equipament.size();
+    }
+
+    public int getMonedas() {
+        int monedas = 0;
+
+        for (Tresor t : equipament) {
+            monedas += t.getValor();
+        }
+
+        return monedas;
+    }
+
+    public int getVida() {
+        return this.vida;
     }
 
 }

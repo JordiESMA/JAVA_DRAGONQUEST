@@ -1,18 +1,24 @@
 import java.util.Random;
 
 public class SalaTeranyina extends Sala {
-    //ATRIBUTS
 
-    //CONSTRUCTOR
+    // ---------------------------------
+    // ---------- ATRIBUTOS ------------
+    // ---------------------------------
 
-    //METODOS
-    
+    Random rand = new Random();
+
+    // ---------------------------------
+    // ----- FUNCIONES OBLIGATORIOS ----
+    // ---------------------------------
+
+
+    @Override
     public boolean intentarSortir(Personatge p) {
-
-         if (p.teExit(p.getForsa())) {
+        if(rand.nextInt(1, 13) <= p.getForsa()) {
             return true;
-         } else{
-            return false;
-         }
         }
+        return false;
+    }
+
 }

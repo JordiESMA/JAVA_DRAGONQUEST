@@ -1,22 +1,30 @@
 import java.util.Random;
 
 public class Monstre implements Combatent {
-    private Random rand = new Random();
 
-    // ATRIBUTOS
+
+    // ---------------------------------
+    // ---------- ATRIBUTOS ------------
+    // ---------------------------------
+
+
+
+    private Random rand = new Random();
 
     private String nom;
     private int vida;
     private int penalitzacio;
     private int valorExperiencia;
 
-    // CONSTRUCTOR
 
-    /**
-     * Cuando nos manden el tipus nosotros de aqui generamos el monstruo a la sala
-     *
-     * @param tipus
-     */
+
+
+    // ---------------------------------
+    // --------- CONSTRUCTOR -----------
+    // ---------------------------------
+
+
+
     public Monstre(int tipus) {
         switch (tipus) {
             case 0:
@@ -31,12 +39,16 @@ public class Monstre implements Combatent {
         }
     }
 
-    // MÉTODOS
 
-    @Override
-    public String toString() {
-        return "Nom: " + nom + ", vida:" + vida;
-    }
+
+
+
+    // ---------------------------------
+    // ----- FUNCIONES OBLIGATORIOS ----
+    // ---------------------------------
+
+
+
 
     @Override
     public int calcularAtac() {
@@ -57,12 +69,37 @@ public class Monstre implements Combatent {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Nom: " + nom + ", vida:" + vida;
+    }
+
+
+
+
+    // ---------------------------------
+    // ----- FUNCIONES ADICIONALES -----
+    // ---------------------------------
+
+
+
+
     private void crearMonstre(String nom, int vida) {
         this.nom = nom;
         this.vida = vida;
         this.valorExperiencia = this.vida * 2;
         this.penalitzacio = rand.nextInt(4);
     }
+
+
+
+
+    // ---------------------------------
+    // ------ GETTERS + SETTERS --------
+    // ---------------------------------
+
+
+
 
     public int getVida() {
         return this.vida;
@@ -71,8 +108,13 @@ public class Monstre implements Combatent {
     public String getNom() {
         return this.nom;
     }
+
     public int getPenalitzacio(){
         return this.penalitzacio;
+    }
+
+    public int getValorExperiencia() {
+        return this.valorExperiencia;
     }
 
 }
