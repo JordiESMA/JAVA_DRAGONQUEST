@@ -12,6 +12,7 @@ public class Masmorra {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
+        Random rand = new Random();
 
         Sala[][] mapaSalas = crearMasmorra();
         Personatge pers = new Personatge("Caballero");
@@ -31,10 +32,11 @@ public class Masmorra {
 
             System.out.println("¿QUÉ DESEAS HACER?");
             System.out.println("1. Moverse");
-            System.out.println("2. Atacar");
-            System.out.println("3. Explorar");
-            System.out.println("4. Personaje info");
-            System.out.println("5. Sala actual info");
+            System.out.println("2. Descansar");
+            System.out.println("3. Atacar");
+            System.out.println("4. Explorar");
+            System.out.println("5. Personaje info");
+            System.out.println("6. Sala actual info");
 
             int accio =  sc.nextInt();
 
@@ -78,6 +80,19 @@ public class Masmorra {
                     break;
 
                 case 2:
+                    if(salaActual.getMonstre() == null || !salaActual.getMonstre().estaViu()) {
+                        if (pers.getVida() < 5) {
+                            pers.setVida(1);
+                            System.out.println("Has podido descansar. Vida actual: " +  pers.getVida());
+                        } else {
+                            System.out.println("Tienes más de 5 puntos de vida");
+                        }
+                    } else {
+                        System.out.println("No puedes descansar mientras haya un monstruo en la sala");
+                    }
+
+                    break;
+                case 3:
                     Monstre m = salaActual.getMonstre();
 
                     if (m != null && m.estaViu()) {
@@ -93,17 +108,17 @@ public class Masmorra {
                     }
                     break;
 
-                case 3:
+                case 4:
                     mapaSalas[x][y].setExplorada(true);
                     pers.explorar(mapaSalas[x][y]);
                     System.out.println("Has explorado la sala cuidadosamente.");
                     break;
 
-                case 4:
+                case 5:
                     System.out.println(pers);
                     break;
 
-                case 5:
+                case 6:
                     System.out.println(salaActual);
                     break;
 

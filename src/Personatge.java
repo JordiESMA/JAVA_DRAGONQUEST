@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Personatge implements Combatent{
 
@@ -21,6 +22,7 @@ public class Personatge implements Combatent{
     private int forsa;
     private int[] posicio;
     private ArrayList<Tresor> equipament;
+    private Arma arma;
 
 
 
@@ -62,15 +64,31 @@ public class Personatge implements Combatent{
     }
 
     public void explorar(Sala salaActual) {
+        Scanner sc = new Scanner(System.in);
         Tresor t = salaActual.getTresor();
+        Arma a = salaActual.getArma();
 
         if (t != null && equipament.size() < forsa) {
             equipament.add(t);
-            System.out.println("Has encontrado y equipado: " + t.toString());
+            System.out.println("Has encontrado y equipado: " + t);
         } else if (!(equipament.size() < forsa)) {
             System.out.println("Inventario lleno, no puedes coger el tresor.");
         } else {
             System.out.println("No hay tresor en esta sala.");
+        }
+
+        if (arma == null) {
+            arma = a;
+            System.out.println("Has encontrado y equipado: " + a.getNom());
+        } else {
+            System.out.println("Has encontrado " + a.getNom());
+            System.out.println("Actualmente, tienes " + arma.getNom());
+            System.out.println("¿Quieres cambiar el arma actual por una nueva? (S / N)");
+            char resp = sc.next().charAt(0);
+
+            if (resp == 'S') {
+                arma = a;
+            }
         }
 
     }
@@ -94,7 +112,23 @@ public class Personatge implements Combatent{
 
     @Override
     public int calcularAtac() {
-        return rand.nextInt(1, (atac + 1));
+        int bonus = 0;
+
+        if (this.arma != null) {
+            if (arma.getTipus() == 1) {
+                bonus = 1;
+            }
+
+            if (arma.getTipus() == 2 && rand.nextBoolean()) {
+                bonus = 2;
+            }
+
+            if (arma.getTipus() == 3 && rand.nextInt(1, 11) <= 3) {
+                bonus = 3;
+            }
+        }
+
+        return rand.nextInt(1, (atac + 1)) + bonus;
     }
 
     @Override
@@ -166,6 +200,10 @@ public class Personatge implements Combatent{
         }
 
         return monedas;
+    }
+
+    public void setVida(int vida) {
+        this.vida = vida;
     }
 
     public int getVida() {
