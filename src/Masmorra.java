@@ -82,7 +82,7 @@ public class Masmorra {
                 case 2:
                     if(salaActual.getMonstre() == null || !salaActual.getMonstre().estaViu()) {
                         if (pers.getVida() < 5) {
-                            pers.setVida(1);
+                            pers.setVida(pers.getVida() + 1);
                             System.out.println("Has podido descansar. Vida actual: " +  pers.getVida());
                         } else {
                             System.out.println("Tienes más de 5 puntos de vida");
@@ -112,8 +112,12 @@ public class Masmorra {
                     if (rand.nextInt(1, 11) == 1) {
                         int r = rand.nextInt(1, 4);
                         pers.setVida(pers.getVida() - r);
-
                         System.out.println("¡El personaje ha caído en una trampa! Pierde " + r + " puntos de vida.");
+
+                        if (!pers.estaViu()) {
+                            causaDeLaMort = "Trampa";
+                        }
+
                     } else {
                         mapaSalas[x][y].setExplorada(true);
                         pers.explorar(mapaSalas[x][y]);

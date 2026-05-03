@@ -71,25 +71,31 @@ public class Personatge implements Combatent{
         if (t != null && equipament.size() < forsa) {
             equipament.add(t);
             System.out.println("Has encontrado y equipado: " + t);
+            salaActual.setTresor(null);
         } else if (!(equipament.size() < forsa)) {
             System.out.println("Inventario lleno, no puedes coger el tresor.");
         } else {
             System.out.println("No hay tresor en esta sala.");
         }
 
-        if (arma == null) {
-            arma = a;
-            System.out.println("Has encontrado y equipado: " + a.getNom());
-        } else {
-            System.out.println("Has encontrado " + a.getNom());
-            System.out.println("Actualmente, tienes " + arma.getNom());
-            System.out.println("¿Quieres cambiar el arma actual por una nueva? (S / N)");
-            char resp = sc.next().charAt(0);
-
-            if (resp == 'S') {
+        if (a != null) {
+            if (arma == null) {
                 arma = a;
+                System.out.println("Has encontrado y equipado: " + a.getNom());
+                salaActual.setArma(null);
+            } else {
+                System.out.println("Has encontrado " + a.getNom());
+                System.out.println("Actualmente, tienes " + arma.getNom());
+                System.out.println("¿Quieres cambiar el arma actual por una nueva? (S / N)");
+                char resp = sc.next().charAt(0);
+
+                if (resp == 'S') {
+                    arma = a;
+                    salaActual.setArma(null);
+                }
             }
         }
+
 
     }
 

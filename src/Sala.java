@@ -8,7 +8,6 @@ public abstract class Sala {
     // ---------------------------------
 
 
-
     private Random rand = new Random();
 
     private boolean esExplorada;
@@ -57,15 +56,15 @@ public abstract class Sala {
 
     @Override
     public String toString() {
-        if (monstre != null && tresor != null && arma != null) {
+        if ((monstre != null && monstre.estaViu()) && tresor != null && arma != null) {
             return "Hay un monstruo, un tesoro y un arma en la sala";
-        } else if (monstre != null && tresor != null) {
+        } else if ((monstre != null && monstre.estaViu()) && tresor != null) {
             return "Hay un monstruo y un tesoro en la sala";
-        } else if (monstre != null && arma != null) {
+        } else if ((monstre != null && monstre.estaViu()) && arma != null) {
             return "Hay un monstruo y un arma en la sala";
         } else if (tresor != null && arma != null) {
             return "Hay un tesoro y un arma en la sala";
-        } else if (monstre != null) {
+        } else if (monstre != null && monstre.estaViu()) {
             return "Hay un monstruo en la sala";
         } else if (tresor != null) {
             return "Hay un tesoro en la sala";
@@ -100,6 +99,14 @@ public abstract class Sala {
 
     public boolean getExplorada() {
         return this.esExplorada;
+    }
+
+    public void setTresor(Tresor tresor) {
+        this.tresor = tresor;
+    }
+
+    public void setArma(Arma arma) {
+        this.arma = arma;
     }
 
 }
