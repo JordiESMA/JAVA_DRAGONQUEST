@@ -122,15 +122,15 @@ public class Personatge implements Combatent{
 
         if (this.arma != null) {
             if (arma.getTipus() == 1) {
-                bonus = 1;
+                bonus = arma.getDany();
             }
 
             if (arma.getTipus() == 2 && rand.nextBoolean()) {
-                bonus = 2;
+                bonus = arma.getDany();
             }
 
             if (arma.getTipus() == 3 && rand.nextInt(1, 11) <= 3) {
-                bonus = 3;
+                bonus = arma.getDany();
             }
         }
 
