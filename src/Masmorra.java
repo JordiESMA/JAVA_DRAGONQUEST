@@ -56,10 +56,12 @@ public class Masmorra {
                             if (m != null && m.estaViu()) {
                                 pers.rebreDany(m.getPenalitzacio());
                                 System.out.println("¡El monstruo te ha penalizado al salir!");
+                                pers.moure(direccio);
 
                                 if(!pers.estaViu()) {
                                     causaDeLaMort = "Monstruo";
                                 }
+
 
                             } else {
                                 pers.moure(direccio);

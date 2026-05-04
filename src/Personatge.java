@@ -113,6 +113,9 @@ public class Personatge implements Combatent{
             case 'A':
                 setPosicio(this.posicio[0], this.posicio[1] - 1);
                 break;
+            default:
+                System.out.println("Dirección incorrecta (W | S | D | A)");
+                break;
         }
     }
 
