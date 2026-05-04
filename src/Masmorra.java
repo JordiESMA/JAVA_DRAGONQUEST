@@ -111,7 +111,7 @@ public class Masmorra {
                 case 4:
                     if (rand.nextInt(1, 11) == 1) {
                         int r = rand.nextInt(1, 4);
-                        pers.setVida(pers.getVida() - r);
+                        pers.rebreDany(r);
                         System.out.println("¡El personaje ha caído en una trampa! Pierde " + r + " puntos de vida.");
 
                         if (!pers.estaViu()) {

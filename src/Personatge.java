@@ -144,11 +144,7 @@ public class Personatge implements Combatent{
 
     @Override
     public boolean estaViu() {
-        if (this.vida > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.vida > 0;
     }
 
     @Override

@@ -6,7 +6,7 @@ public class SalaPont extends Sala {
     // ---------- ATRIBUTOS ------------
     // ---------------------------------
 
-    Random rand = new Random();
+    private Random rand = new Random();
 
     // ---------------------------------
     // ----- FUNCIONES OBLIGATORIOS ----
